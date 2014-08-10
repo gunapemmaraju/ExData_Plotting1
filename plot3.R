@@ -9,7 +9,10 @@ df<-read.table("household_power_consumption.txt", sep=";",na.strings="?",comment
 df<-transform(df,dateTime=strptime(paste(df$Date, df$Time), format="%d/%m/%Y%H:%M:%S"), Date=as.Date(df$Date, format="%d/%m/%Y"))
 df<-df[df$Date>=d1 & df$Date<=d2,]
 #plotting
-png(file = "plot1.png")
-hist(df$Global_active_power, main="Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
+png(file = "plot3.png")
+plot(df$dateTime,df$Sub_metering_1, xlab="", ylab="Energy sub metering", type="n")
+lines(df$dateTime,df$Sub_metering_1)
+lines(df$dateTime,df$Sub_metering_2, col="red")
+lines(df$dateTime,df$Sub_metering_3, col="blue")
+legend("topright", col = c("black", "red", "blue"), legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),lty=c(1,1,1))
 dev.off()
-
