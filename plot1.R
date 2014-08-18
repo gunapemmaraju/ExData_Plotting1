@@ -1,3 +1,4 @@
+# new comment
 #variable setup
 c1<-rep("numeric",7)
 c2<-rep("character",2)
